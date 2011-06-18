@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">     
+  <head>
+
+    <meta charset="UTF-8"/>     
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <title>tilos</title>
+
+	<LINK href="index.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="index.js"></script>
+	
+  </head>
+  
+  <body onload="loaded();">
+	<div id="log" onclick="toggleLog();">
+		<div id="text"></div>
+	</div>
+	<div id="content">
+		<h1>Totoya Klub + Dzsungel könyve</h1>
+		<h3>Cadik, DJ Ren</h3>
+		<div id="play" onclick="togglePlay()"></div>
+		<div id="controller" onmousedown="controllerDown(event)" onmouseup="controllerUp(event)">
+			<div id="track"></div>
+			<div id="progress">
+				<div id="rombus"></div>
+			</div>
+		</div>
+		<div style="height:30px"></div>
+		<div id="programs"></div>
+<!--		<canvas id="canvas" width="1050" height="400" onclick="toggleArchive();"></canvas> -->
+	</div>
+  </body>
+</html>
+

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+ 	width="40" height="40"
+     version="1.1">
+
+  <script type="text/javascript">
+  <![CDATA[
+
+    function getTarget (event) {
+      var target = event.target;
+//      while (target.parentNode !== event.currentTarget) {
+//       target = target.parentNode;
+ //     }
+      return target;
+    }
+
+    function fade (target)
+	{
+      
+		var template_animations = document.getElementById('defs').getElementsByTagNameNS('http://www.w3.org/2000/svg', '*');
+		var animations = new Array();
+		for (var i = 0; i < template_animations.length; i++) {
+			var animation = template_animations.item(i).cloneNode(false);
+			animations.push(target.appendChild(animation));
+		}
+	
+		var bounds = target.getBBox();
+		var t_x = bounds.width / 2 + bounds.x;
+		var t_y = bounds.height / 2 + bounds.y;
+    
+      // customize translations
+      	animations[0].setAttributeNS(null, 'from', t_x + ',' + t_y);
+      	animations[0].setAttributeNS(null, 'to', t_x + ',' + t_y);
+      	animations[2].setAttributeNS(null, 'from', (-t_x) + ',' + (-t_y));
+      	animations[2].setAttributeNS(null, 'to', (-t_x) + ',' + (-t_y));
+     
+ 	  // launch animations
+		for (var i = 0; i < animations.length; i++) {
+			animations[i].beginElement();
+		}
+    }
+
+  ]]>
+  </script>
+
+  <defs id="defs">
+  	<animateTransform begin="indefinite" attributeName="transform" type="translate" dur="0.5" additive="sum" />    
+    <animateTransform begin="indefinite" attributeName="transform" type="scale" to="2" dur="0.5" additive="sum" />
+    <animateTransform begin="indefinite" attributeName="transform" type="translate" dur="0.5" additive="sum" />
+  </defs>
+  
+  <circle cx="10" cy="10" r="10" stroke="#000000" transform="translate(0,0)" onmouseover="fade(getTarget(evt))"/>
+    
+</svg>
